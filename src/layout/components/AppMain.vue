@@ -24,6 +24,7 @@ export default {
   width: 100%;
   position: relative;
   overflow: hidden;
+  /* background: rosybrown; */
 }
 .fixed-header+.app-main {
   padding-top: 50px;
@@ -35,6 +36,7 @@ export default {
 .el-popup-parent--hidden {
   .fixed-header {
     padding-right: 15px;
+    
   }
 }
 </style>

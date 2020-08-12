@@ -75,4 +75,13 @@ export default {
     cursor: text;
   }
 }
+
+.navbar[data-v-d16d6306] {
+    height: 50px;
+    overflow: hidden;
+    position: relative;
+    background: rgb(40, 66, 80);
+    -webkit-box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+}
 </style>

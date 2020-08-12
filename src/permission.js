@@ -34,14 +34,14 @@ router.beforeEach(async(to, from, next) => {
           // 重新获取用户信息
           await store.dispatch('user/getInfo')
           // 获取菜单（路由）信息
-          const accessRoutes  = await store.dispatch('menu/getSideMenus');
-          if(accessRoutes.length==0){
-            return false;
-          }
-          router.addRoutes(accessRoutes)
+          // const accessRoutes  = await store.dispatch('menu/getSideMenus');
+          // console.log(accessRoutes,'路由')
+        //   if(accessRoutes.length==0){
+        //     return false;
+        //   }
+        //   router.addRoutes(accessRoutes)
 
           next({ ...to, replace: true })
-          next()
         } catch (error) {
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')

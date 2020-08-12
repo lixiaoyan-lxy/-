@@ -1,5 +1,7 @@
 <template>
-    <div>商品中心</div>
+    <div>
+        <el-card>1234</el-card>
+    </div>
 </template>
 
 <script>

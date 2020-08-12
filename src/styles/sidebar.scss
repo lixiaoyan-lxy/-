@@ -5,6 +5,7 @@
     transition: margin-left .28s;
     margin-left: $sideBarWidth;
     position: relative;
+    background-color: red($color: #e23737);
   }
 
   .sidebar-container {
@@ -19,6 +20,8 @@
     left: 0;
     z-index: 1001;
     overflow: hidden;
+    background: blue($color: #f00202);
+    
 
     // reset element-ui css
     .horizontal-collapse-transition {

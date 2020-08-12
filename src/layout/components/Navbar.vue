@@ -28,13 +28,16 @@
         </el-dropdown-menu>
       </el-dropdown>
     </div>
+
   </div>
+  
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+
 
 export default {
   components: {
@@ -64,7 +67,7 @@ export default {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: #fff;
+  background: rgb(40, 66, 80);
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {

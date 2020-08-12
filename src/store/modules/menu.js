@@ -3,7 +3,8 @@ import { traverseRoutes } from '@/utils/route'
 import { constantRoutes } from '@/router'
 const state = {
   routes: [],
-  addRoutes: []
+  addRoutes: [],
+  constantRoutes:constantRoutes
 }
 
 const mutations = {
@@ -16,17 +17,19 @@ const mutations = {
 const actions = {
   getSideMenus({ commit, state }) {
     return new Promise((resolve, reject) => {
+      commit('SET_ROUTES', []);
+      resolve([])
       // 路由获取
-      fecthRouter().then(response => {
-        let menus = response.data
-        menus.push({ path: '*', redirect: '/404', hidden: true })
-        let remoteroutes = traverseRoutes(menus)
-        commit('SET_ROUTES', remoteroutes);
-        resolve(remoteroutes);
-      }).catch(error => {
-        console.log('获取菜单失败')
-        reject(error)
-      })
+      // fecthRouter().then(response => {
+      //   let menus = response.data
+      //   menus.push({ path: '*', redirect: '/404', hidden: true })
+      //   let remoteroutes = traverseRoutes(menus)
+        // commit('SET_ROUTES', remoteroutes);
+      //   resolve(remoteroutes);
+      // }).catch(error => {
+      //   console.log('获取菜单失败')
+      //   reject(error)
+      // })
     })
   }
 }

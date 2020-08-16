@@ -6,7 +6,7 @@ import request from '@/utils/request'
  */
 export function login(data) {
   return request({
-    url: '/Index.php/admin/member/login',
+    url: '/admin/login',
     method: 'post',
     data
   })
@@ -14,8 +14,8 @@ export function login(data) {
 
 export function getInfo(token) {
   return request({
-    url: '/Index.php/admin/user/index',
-    method: 'post',
+    url: '/admin/Getadmindata',
+    method: 'get',
     params: { token }
   })
 }

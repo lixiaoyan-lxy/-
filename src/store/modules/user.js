@@ -5,6 +5,7 @@ import { resetRouter } from '@/router'
 const getDefaultState = () => {
   return {
     token: getToken(),
+    userInfo: "",
     name: '',
     avatar: ''
   }
@@ -22,6 +23,9 @@ const mutations = {
   SET_NAME: (state, name) => {
     state.name = name
   },
+  SET_USERINFO: (state, userInfo) => {
+    state.userInfo = userInfo
+  },
   SET_AVATAR: (state, avatar) => {
     state.avatar = avatar
   }
@@ -33,9 +37,11 @@ const actions = {
     const { username, password } = userInfo
     return new Promise((resolve, reject) => {
       login({ username: username.trim(), password: password }).then(response => {
-        if (response.code == 200) {
-          const { token } = response
+        if (response.code == 0) {
+          const { data } = response
+          const token = data;
           commit('SET_TOKEN', token)
+
           setToken(token)
         }
         resolve()
@@ -49,8 +55,8 @@ const actions = {
   getInfo({ commit, state }) {
     return new Promise((resolve, reject) => {
       getInfo(state.token).then(response => {
-        console.log(response[0], '用户信息获取')
-        const { data } = response[0]
+        console.log(response, '用户信息获取')
+        const { data } = response
 
         if (!data) {
           return reject('用户数据获取失败')
@@ -59,7 +65,7 @@ const actions = {
         const { username } = data
 
         commit('SET_NAME', username)
-        // commit('SET_AVATAR', avatar)
+        commit('SET_USERINFO', data)
         resolve(data)
       }).catch(error => {
         reject(error)
@@ -97,4 +103,3 @@ export default {
   mutations,
   actions
 }
-

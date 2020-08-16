@@ -14,7 +14,7 @@ let imgBaseUrl;
 // 生产环境配置
 let devConfig = {
     // baseUrl: 'http://152.136.111.216:8088',
-    baseUrl: 'http://192.168.1.106:8080',
+    baseUrl: 'http://server3.luronghui.cn',
     imgBaseUrl: 'http://152.136.111.216:8002',
 }
 

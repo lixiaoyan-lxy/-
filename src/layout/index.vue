@@ -65,7 +65,7 @@ export default {
     }
   }
   .drawer-bg {
-    background: #000;
+    background: rgb(248, 244, 244);
     opacity: 0.3;
     width: 100%;
     top: 0;

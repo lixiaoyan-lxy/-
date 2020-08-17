@@ -14,6 +14,10 @@ import router from './router'
 
 import '@/icons' // icon
 import '@/permission' // permission control
+import echarts from 'echarts'
+// import  elementResizeDetector  from "element-resize-detector" //窗口变化时，刷新图表，保持大小可观
+
+Vue.prototype.$echarts = echarts
 
 /**
  * If you don't want to use mock-server

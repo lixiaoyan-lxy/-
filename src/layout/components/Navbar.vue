@@ -37,6 +37,8 @@
 import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
+import { removeToken } from "@/utils/auth";
+import router, { resetRouter } from "@/router";
 
 
 export default {
@@ -54,10 +56,19 @@ export default {
     toggleSideBar() {
       this.$store.dispatch('app/toggleSideBar')
     },
-    async logout() {
-      await this.$store.dispatch('user/logout')
-      this.$router.push(`/login?redirect=${this.$route.fullPath}`)
-    }
+     async logout() {
+      await this.$store.commit("user/SET_TOKEN", "");
+      await this.$store.commit("user/SET_ROLES", []);
+      removeToken();
+      resetRouter();
+      this.$router.push(`/login?redirect=${this.$route.fullPath}`);
+    },
+    // logout() {
+    //   //清空token
+    //   window.sessionStorage.clear();
+    //   //跳转到登录页
+    //   this.$router.push("/login");
+    // },
   }
 }
 </script>
@@ -67,7 +78,7 @@ export default {
   height: 50px;
   overflow: hidden;
   position: relative;
-  background: rgb(40, 66, 80);
+  background: rgb(244, 250, 253);
   box-shadow: 0 1px 4px rgba(0,21,41,.08);
 
   .hamburger-container {
@@ -75,7 +86,7 @@ export default {
     height: 100%;
     float: left;
     cursor: pointer;
-    transition: background .3s;
+    transition: .3s;
     -webkit-tap-highlight-color:transparent;
 
     &:hover {

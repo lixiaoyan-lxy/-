@@ -51,22 +51,46 @@ export const constantRoutes = [
       path: 'dashboard',
       name: 'Dashboard',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
 
   {
     path: '/users',
     component: Layout,
+    redirect:'/users/usermange',
+    name:'Users',
+    meta: {title:'用户中心', icon:'user'},
     children: [
       {
-        path: 'index',
-        name: 'Users',
-        component: () => import('@/views/users/index'),
-        meta: { title: '用户中心', icon: 'user'}
+        path: 'usermange',
+        name: 'Usermange',
+        component: () => import('@/views/usermange/index'),
+        meta: { title: '用户管理'}
+      },
+      {
+        path: 'rolesmange',
+        name:'Rolesmange',
+        component: () => import('@/views/rolesmange/index'),
+        meta: {title: '角色管理'}
       }
     ]
   },
+  // {
+  //   path: '/users',
+  //   component: Layout,
+  //   redirect: 'users/userslist',
+  //   name: 'Users',
+  //   meta: { title: '用户中心', icon: 'user'},
+  //   children: [
+  //     {
+  //       path: 'userslist',
+  //       name: 'Userslist',
+  //       component: () => import('@/views/userslist/index'),
+  //       meta: { title: '用户列表'}
+  //     }
+  //   ]
+  // },
 
   {
     path: '/goods',

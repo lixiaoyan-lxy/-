@@ -1,0 +1,42 @@
+data(){
+        return{
+            // 获取用户列表参数
+            formInline: {
+             user: "",
+             status: ""
+            },
+            page: {
+             currentPage: 1,
+             total: 11,
+             page: 1,
+             pageSize: 10
+            },
+            userlist:[],
+            addUser:false,
+        }
+    },
+    created(){
+
+        this.getList()
+    },
+    methods:{
+        getList(){
+            let listData = {
+                page:this.page.page,
+                pageSize:this.page.pageSize,
+                keyword: this.formInline.user,
+                status: this.formInline.status
+            };
+            GetUserList(listData)
+            .then(res => {
+                
+                if(res.code === 0) {
+                    this.userlist = res.data;
+                    this.page.total = res.count;
+                }
+            })
+            .catch(error => {
+                concole.log(error);
+            })
+        }
+    }

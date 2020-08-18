@@ -24,15 +24,6 @@ export function UserAdd(data){
     })
 }
 
-// 更新用户信息
-// export function UpData(data){
-//     return request({
-//         url:'http://47.103.201.174/index.php/user/updateStatus',
-//         method: 'post',
-//         data
-//     })
-// }
-
 // 修改用户信息
 export function EidtUserss(data){
     return request ({

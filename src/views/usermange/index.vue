@@ -173,7 +173,7 @@ export default {
         getLists(){
             let listData = {
                 page:this.queryInfo.page,
-                pageSize:this.queryInfo.pageSize,
+                pageSize:this.query*queryInfoInfo.pageSize,
                 keyword:this.queryInfo.user,
                 status:this.queryInfo.status
             };

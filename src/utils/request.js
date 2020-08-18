@@ -6,7 +6,7 @@ import {baseUrl} from '@/config'
 
 // create an axios instance
 const service = axios.create({
-  baseURL:baseUrl, // url = base url + request url
+  baseURL:"	http://server3.luronghui.cn", // url = base url + request url
   // withCredentials: true, // send cookies when cross-domain requests
   timeout: 5000 // request timeout
 })

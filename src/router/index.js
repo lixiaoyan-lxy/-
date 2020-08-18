@@ -37,6 +37,12 @@ export const constantRoutes = [
     hidden: true
   },
 
+  // {
+  //   path:'/logout',
+  //   component: ()=> import('@/views/login/index'),
+  //   hidden:true
+  // },
+
   {
     path: '/404',
     component: () => import('@/views/404'),
@@ -95,22 +101,22 @@ export const constantRoutes = [
   {
     path: '/goods',
     component: Layout,
-    redirect: '/goods/goodslist',
+    // redirect: '/goods/goodslist',
     name: 'Goods',
     meta: { title: '商品中心', icon: 'goods'},
     children: [
       {
         path: 'goodslist',
         name: 'Goodslist',
-        component: () => import('@/views/goodslist/index'),
+        component: () => import('@/views/goods/goodslist/index'),
         meta: { title: '商品列表'}
       },
-      {
-        path: 'goodsmanage',
-        name: 'Goodsmanage',
-        component: () => import('@/views/goodsmanage/index'),
-        meta: { title: '商品管理'}
-      },
+      // {
+      //   path: 'goodsmanage',
+      //   name: 'Goodsmanage',
+      //   component: () => import('@/views/goods/goodsmanage/index'),
+      //   meta: { title: '商品管理'}
+      // },
     ]
   },
 

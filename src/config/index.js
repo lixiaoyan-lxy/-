@@ -11,6 +11,7 @@ let baseUrl = 'http://server3.luronghui.cn';
 let routerMode = 'hash';
 let imgBaseUrl;
 
+<<<<<<< HEAD
 // // 生产环境配置
 // let devConfig = {
 //     // baseUrl: 'http://152.136.111.216:8088',
@@ -18,6 +19,14 @@ let imgBaseUrl;
 //     baseUrel: 'http://server3.luronghui.cn',
 //     imgBaseUrl: 'http://152.136.111.216:8002',
 // }
+=======
+// 生产环境配置
+let devConfig = {
+    // baseUrl: 'http://152.136.111.216:8088',
+    baseUrl: 'http://server3.luronghui.cn',
+    imgBaseUrl: 'http://152.136.111.216:8002',
+}
+>>>>>>> 5399ecbbb751819adca9df75664181ee67435fee
 
 // // 上线环境配置
 // let prodConfig = {

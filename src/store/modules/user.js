@@ -41,7 +41,11 @@ const actions = {
           const { data } = response
           const token = data;
           commit('SET_TOKEN', token)
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 5399ecbbb751819adca9df75664181ee67435fee
           setToken(token)
         }
         resolve()
@@ -103,4 +107,3 @@ export default {
   mutations,
   actions
 }
-

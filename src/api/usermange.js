@@ -3,7 +3,6 @@ import request from  '@/utils/request'
 // 获取用户信息
 export function GetUserList(data){
     return request({
-        // url:'/admin/GetAdminList',
         url: '/user/selUserList',
         method: 'get',
         params:data,

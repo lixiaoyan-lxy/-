@@ -152,11 +152,11 @@ export default {
       this.loading = true;
       goodsList(this.qureyInfo)
         .then((res) => {
-          if (res.code === 0) {
+          if (res.code === 200) {
             this.total = res.count;
             this.page = res.page;
             this.pageSize = res.pageSize;
-            console.log(res)
+            // console.log(res)
             this.tableData = res.data;
             this.loading = false;
           }
@@ -188,7 +188,7 @@ export default {
      * 删除用户
      */
     delGood(data) {
-      console.log(data);
+      // console.log(data);
       this.$confirm("将删除此商品, 是否继续?", "警告", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
@@ -197,7 +197,7 @@ export default {
         .then(() => {
           deleteGoods({ id: data })
             .then((res) => {
-              if (res.code === 0) {
+              if (res.code === 200) {
                 this.getGoodsList();
               }
             })
@@ -236,7 +236,7 @@ export default {
                 if(!valid) return
                 addGoods(this.addForm)
                 .then(res => {
-                    if(res.code === 0){
+                    if(res.code === 200){
                         this.addForm = {};
                         this.addDialogGoods = false;
                         this.$message.success('添加商品成功！')

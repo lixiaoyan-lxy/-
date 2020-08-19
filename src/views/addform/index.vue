@@ -47,6 +47,7 @@ export default {
         ggweizhi: "",
         wid: "",
         hig: "",
+        state: false
       },
       formRules: {
         ggweizhi: [

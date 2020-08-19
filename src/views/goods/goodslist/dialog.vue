@@ -111,7 +111,7 @@ export default {
         if (valid) {
           editGoods(this.form)
             .then(res => {
-              if (res.code === 0) {
+              if (res.code === 200) {
                 this.fn();
                 this.dialogForm = false;
                 this.form = {};

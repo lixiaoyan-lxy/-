@@ -10,7 +10,7 @@ NProgress.configure({ showSpinner: false }) // NProgress Configuration
 
 const whiteList = ['/login'] // no redirect whitelist
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   // start progress bar
   NProgress.start()
 
@@ -19,29 +19,31 @@ router.beforeEach(async(to, from, next) => {
 
   // determine whether the user has logged in
   const hasToken = getToken()
-
   if (hasToken) {
+
     if (to.path === '/login') {
       // if is logged in, redirect to the home page
       next({ path: '/' })
       NProgress.done()
     } else {
       const hasGetUserInfo = store.getters.name
+
       if (hasGetUserInfo) {
         next()
       } else {
         try {
           // 重新获取用户信息
-          await store.dispatch('user/getInfo')
+          // await store.dispatch('user/getInfo')
           // 获取菜单（路由）信息
           // const accessRoutes  = await store.dispatch('menu/getSideMenus');
           // console.log(accessRoutes,'路由')
-        //   if(accessRoutes.length==0){
-        //     return false;
-        //   }
-        //   router.addRoutes(accessRoutes)
-
-          next({ ...to, replace: true })
+          //   if(accessRoutes.length==0){
+          //     return false;
+          //   }
+          //   router.addRoutes(accessRoutes)
+          // console.log('执行')
+          // next({ ...to, replace: true })
+          next()
         } catch (error) {
           // remove token and go to login page to re-login
           await store.dispatch('user/resetToken')

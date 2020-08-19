@@ -37,13 +37,12 @@ const actions = {
         const { username, password } = userInfo
         return new Promise((resolve, reject) => {
             login({ username: username.trim(), password: password }).then(response => {
-                if (response.code == 0) {
-                    const { data } = response
-                    const token = data;
+                if (response.code == 200) {
+                    const { token } = response
                     commit('SET_TOKEN', token)
                     setToken(token)
                 }
-                resolve()
+                resolve(true)
             }).catch(error => {
                 reject(error)
             })

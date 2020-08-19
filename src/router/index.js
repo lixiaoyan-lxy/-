@@ -154,7 +154,21 @@ export const constantRoutes = [
         path: 'index',
         name: 'Logistical',
         component: () => import('@/views/logistical/index'),
-        meta: { title: '物流中心', icon: 'logistical'}
+        meta: { title: '物流中心', icon: 'logistical' }
+      },
+      {
+        path: 'addInformation',
+        name: 'information',
+        component: () => import('@/views/logistical/addInformation'),
+        meta: { title: '添加信息', icon: 'logistical' },
+        hidden: true
+      },
+      {
+        path: 'edit',
+        name: 'editIndex',
+        component: () => import('@/views/logistical/edit'),
+        meta: { title: '编辑内容', icon: 'logistical' },
+        hidden: true
       }
     ]
   },
@@ -162,12 +176,48 @@ export const constantRoutes = [
   {
     path: '/ad',
     component: Layout,
+    // redirect: '/ad/adv_position',
+    name: 'Ad',
+    meta: { title: '广告中心', icon: 'el-icon-picture' },
     children: [
       {
-        path: 'index',
-        name: 'Ad',
-        component: () => import('@/views/ad/index'),
-        meta: { title: '广告中心', icon: 'ad'}
+        path: 'adv_position',
+        name: 'Adv_position',
+        component: () => import('@/views/adv_position/index'),
+        meta: { title: '广告位管理' }
+      },
+      {
+        path: 'adv',
+        name: 'Adv',
+        component: () => import('@/views/adv/index'),
+        meta: { title: '广告管理' }
+      },
+      {
+        path: '/ad/adv_position/addform',
+        hidden:true,
+        name: 'addform',
+        component: () => import('@/views/addform/index'),
+        meta: {title: 'Addform'}
+      },
+      {
+        path:'/ad/adv_position/editform',
+        hidden:true,
+        name:'editform',
+        component: () => import('@/views/editform/index'),
+        meta: {title: 'editform' }
+      },
+      {
+        path:'/ad/adv_position/addchild',
+        hidden:true,
+        name:'addchild',
+        component: () => import('@/views/addchild/index'),
+        meta: {title:'addchild'}
+      },{
+        path:'/ad/adv_position/editchild',
+        hidden:true,
+        name:'editchild',
+        component: () => import('@/views/editchild/index'),
+        meta: {title:'editchild'}
       }
     ]
   },

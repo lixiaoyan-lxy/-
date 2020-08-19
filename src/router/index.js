@@ -123,12 +123,23 @@ export const constantRoutes = [
   {
     path: '/order',
     component: Layout,
+    alwaysShow: true ,
+    meta: { title: '订单中心', icon: 'order' },
     children: [
       {
         path: 'index',
         name: 'Order',
         component: () => import('@/views/order/index'),
-        meta: { title: '订单中心', icon: 'order'}
+      
+        meta: { title: '订单管理', icon: 'order' }
+      },
+      {
+        path: 'indexItemViewOrder',
+        name: 'Order',
+         hidden: true ,
+      
+        component: () => import('@/views/order/indexItemViewOrder'),
+        meta: { title: '查看订单', icon: 'order' }
       }
     ]
   },

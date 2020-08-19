@@ -6,7 +6,7 @@ export function GetRolesLest(data){
         url:'/role/getRole',
         method: 'get',
         data,
-        baseURL: 'http://47.103.201.174/'
+        baseURL: 'http://47.93.255.80:8081/admin'
     })
 }
 
@@ -16,7 +16,7 @@ export function AddRole(data){
         url: '/role/insertRole?id=9&role=&describe=',
         method: 'post',
         data,
-        baseURL: 'http://47.103.201.174/'
+        baseURL: 'http://47.93.255.80:8081/admin'
     })
 }
 
@@ -26,7 +26,7 @@ export function EditRoles(data){
         url:'/role/updataRole',
         method: 'post',
         data,
-        baseURL:'http://47.103.201.174/'
+        baseURL:'http://47.93.255.80:8081/admin'
     })
 }
 
@@ -36,6 +36,6 @@ export function DeleteRole(data){
         url: '/role/deleteRole',
         method: 'post',
         data,
-        baseURL: 'http://47.103.201.174/'
+        baseURL: 'http://47.93.255.80:8081/admin'
     })
 }

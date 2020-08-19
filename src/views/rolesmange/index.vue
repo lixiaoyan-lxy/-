@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <!-- 面包屑导航区 -->
         <el-breadcrumb separator="/">
           <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
@@ -104,13 +103,13 @@ export default {
       GetRolesLest()
       .then(res => {
         // console.log(res);
-        if(res.code === 0){
+        if(res.code === 200){
           this.rolelist = res.data;
           console.log(this.rolelist);
         }
       })
       .catch(error => {
-        consloe.log(res)
+        consloe.log(error)
         this.$message.error('获取角色列表失败！');
       })
     },
@@ -125,7 +124,7 @@ export default {
         if(valid === true){
            AddRole(this.addRoleForm)
            .then( res => {
-             if(res.code === 0){
+             if(res.code === 200){
                this.addRoleForm = {};
                this.addDialogRole = false;
                this.$message.success('添加角色成功！');
@@ -140,7 +139,7 @@ export default {
         // if(!valid) return
         // AddRole(this.addRoleForm)
         // .then(res => {
-        //   if(res.code === 0){
+        //   if(res.code === 200){
         //     this.addRoleForm = {};
         //     this.addDialogRole = false;
         //     this.$message.success('添加角色成功!')
@@ -170,7 +169,7 @@ export default {
         if(valid === true) {
           EditRoles(this.editRoleForm)
           .then(res => {
-            if(res.code === 0){
+            if(res.code === 200){
               this.editDialogRole = false;
               this.$message.success('修改成功');
             }
@@ -195,7 +194,7 @@ export default {
         .then( () => {
           DeleteRole({ id: data })
           .then( res => {
-            if(res.code === 0) {
+            if(res.code === 200) {
               this.$message.success('删除成功！');
               this.getrolelist();
             }

@@ -41,8 +41,7 @@
                 </el-table-column>
                 <el-table-column label="操作" width="180px">
                     <template slot-scope="scope">
-                        <!-- <el-button size="mini" type="success" icon="el-icon-s-claim">调整资金</el-button> -->
-                        <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEdiUser(scope.row)">编辑</el-button>
+                        <!-- <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEdiUser(scope.row)">编辑</el-button> -->
                         <el-button size="mini" type="danger" icon="el-icon-delete" @click="delUser(scope.row.id)">删除</el-button>
                     </template>
                 </el-table-column>
@@ -84,7 +83,7 @@
         </el-dialog>
 
         <!-- 修改用户信息的对话框 -->
-        <el-dialog title="修改用户信息" :visible.sync="ediDialogVisible" width="50%" @close="editDialogClose">
+        <!-- <el-dialog title="修改用户信息" :visible.sync="ediDialogVisible" width="50%" @close="editDialogClose">
             <el-form :model="editForm" :rules="addFormRules" ref="editUserRef" label-width="80px">
                 <el-form-item label="用户昵称" prop="username">
                     <el-input v-model="editForm.username"></el-input>
@@ -109,7 +108,7 @@
                 <el-button @click="ediDialogVisible= false">取 消</el-button>
                 <el-button type="primary" @click="editUserInfo">确 定</el-button>
             </span>
-        </el-dialog>
+        </el-dialog> -->
     </div>
 </template>
 
@@ -161,8 +160,8 @@ export default {
                 ]
             },
             // 控制修改用户信息的显示与隐藏
-            ediDialogVisible:false,
-            editForm:{},
+            // ediDialogVisible:false,
+            // editForm:{},
         }
     },
     created() {
@@ -173,15 +172,16 @@ export default {
         getLists(){
             let listData = {
                 page:this.queryInfo.page,
-                pageSize:this.query*queryInfoInfo.pageSize,
+                pageSize:this.queryInfo.pageSize,
                 keyword:this.queryInfo.user,
                 status:this.queryInfo.status
             };
             GetUserList(listData)
             .then(res => {
-                if(res.code === 0) {
+                if(res.code === 200) {
                     this.userlist = res.data;
                     this.queryInfo.total = res.count;
+
                 }
             })
             .catch(error => {
@@ -209,24 +209,9 @@ export default {
             this.$refs.addFormRef.validate(valid => {
                 // console.log(valid)
                 if(!valid) return
-                // var data=this.addForm
-                // UserAdd(data)
-                // .then(res =>{
-                //     if(res.code === 0){
-                //         this.$message.success('添加用户成功！')
-                //     }
-                //     // if(res.status === 200){
-                //     //     this.$message.success('添加用户成功!')
-                //     // }
-                // })
-                // .catch(
-                //     this.$message.error('添加用户失败！')
-                // )
-                // this.addDialogUser = false;
-                // this.getLists()
                 UserAdd(this.addForm)
                 .then(res => {
-                    if(res.code === 0){
+                    if(res.code === 200){
                         this.addForm = {};
                         this.addDialogUser = false;
                         this.$message.success('添加用户成功！')
@@ -241,34 +226,34 @@ export default {
             })
         },
         // 展示修改用户信息的对话框
-        showEdiUser(data){
-            this.editForm = data;
-            this.ediDialogVisible = true
-        },
+        // showEdiUser(data){
+        //     this.editForm = data;
+        //     this.ediDialogVisible = true
+        // },
         // 监听修改用户信息对话框的关闭事件
-        editDialogClose(){
-            this.$refs.editUserRef.resetFields()
-        },
+        // editDialogClose(){
+        //     this.$refs.editUserRef.resetFields()
+        // },
         // 验证修改信息并提交
-        editUserInfo(){
-            this.$refs.editUserRef.validate(valid =>{
-                // console.log(valid)
-                if(!valid) return
-                EidtUserss(this.editForm)
-                .then(res =>{
-                    if(res.code === 0){
-                        this.ediDialogVisible = false;
-                        this.$message.success('修改成功')
-                    }
-                })
-                .catch(error => {
-                    this.ediDialogVisible = false;
-                    this.$message.error('修改失败！')
-                    console.log(error);
-                })
-                this.getLists();
-            })
-        },
+        // editUserInfo(){
+        //     this.$refs.editUserRef.validate(valid =>{
+        //         // console.log(valid)
+        //         if(!valid) return
+        //         EidtUserss(this.editForm)
+        //         .then(res =>{
+        //             if(res.code === 200){
+        //                 this.ediDialogVisible = false;
+        //                 this.$message.success('修改成功')
+        //             }
+        //         })
+        //         .catch(error => {
+        //             this.ediDialogVisible = false;
+        //             this.$message.error('修改失败！')
+        //             console.log(error);
+        //         })
+        //         this.getLists();
+        //     })
+        // },
         //删除用户
         delUser(data){
             this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
@@ -279,7 +264,7 @@ export default {
             .then( () => {
                 DeleteUser({ id: data})
                 .then(res => {
-                    if(res.code === 0) {
+                    if(res.code === 200) {
                         this.$message.success('删除成功！');
                         this.getLists();
                     }

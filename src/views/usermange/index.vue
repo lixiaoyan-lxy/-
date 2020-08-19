@@ -123,7 +123,7 @@ export default {
                 user:"",
                 status:"",
                 currentPage:1,
-                total:0,
+                total:1,
                 page:1,
                 pageSize:2
             },
@@ -173,13 +173,13 @@ export default {
         getLists(){
             let listData = {
                 page:this.queryInfo.page,
-                pageSize:this.query*queryInfoInfo.pageSize,
+                pageSize:this.queryInfo.pageSize,
                 keyword:this.queryInfo.user,
                 status:this.queryInfo.status
             };
             GetUserList(listData)
             .then(res => {
-                if(res.code === 0) {
+                if(res.code === 200) {
                     this.userlist = res.data;
                     this.queryInfo.total = res.count;
                 }
@@ -226,7 +226,7 @@ export default {
                 // this.getLists()
                 UserAdd(this.addForm)
                 .then(res => {
-                    if(res.code === 0){
+                    if(res.code === 200){
                         this.addForm = {};
                         this.addDialogUser = false;
                         this.$message.success('添加用户成功！')
@@ -256,7 +256,7 @@ export default {
                 if(!valid) return
                 EidtUserss(this.editForm)
                 .then(res =>{
-                    if(res.code === 0){
+                    if(res.code === 200){
                         this.ediDialogVisible = false;
                         this.$message.success('修改成功')
                     }
@@ -279,7 +279,7 @@ export default {
             .then( () => {
                 DeleteUser({ id: data})
                 .then(res => {
-                    if(res.code === 0) {
+                    if(res.code === 200) {
                         this.$message.success('删除成功！');
                         this.getLists();
                     }

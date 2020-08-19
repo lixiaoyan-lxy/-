@@ -10,7 +10,7 @@ export function goodsList(data) {
     url: '/goods/selGoods',
     method: 'get',
     params:data,
-    baseURL: 'http://47.103.201.174/' // 直接通过覆盖的方式
+    baseURL: 'http://47.93.255.80:8081/admin' // 直接通过覆盖的方式
   })
 }
 
@@ -22,7 +22,7 @@ export function selectGoods(data) {
     url: '/initial/QueryProductInformation?id=1',
     method: 'post',
     data,
-    baseURL: '	http://server3.luronghui.cn'  
+    baseURL: 'http://47.93.255.80:8081/admin'  
   })
 }
 
@@ -35,7 +35,7 @@ export function deleteGoods(data) {
     url:'/goods/deleteGoods',
     method:'post',
     data,
-    baseURL: 'http://47.103.201.174/' // 直接通过覆盖的方式
+    baseURL: 'http://47.93.255.80:8081/admin/' // 直接通过覆盖的方式
   })
 }
 
@@ -47,7 +47,7 @@ export function editGoods(data) {
     url:'/goods/updateGoods',
     method:'post',
     data,
-    baseURL: 'http://47.103.201.174/' // 直接通过覆盖的方式
+    baseURL: 'http://47.93.255.80:8081/admin' // 直接通过覆盖的方式
   })
 }
 
@@ -59,6 +59,6 @@ export function addGoods (data) {
     url: '/goods/insertGoods?id=229',
     method: 'post',
     data,
-    baseURL:'http://47.103.201.174/'
+    baseURL:'http://47.93.255.80:8081/admin'
   })
 }

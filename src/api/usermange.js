@@ -10,7 +10,8 @@ export function GetUserList(data){
         url:'/admin/GetAdminList',
         // url:'http://47.103.201.174/index.php/user/selUserList',
         method: 'get',
-        params:data
+        params:data,
+        // baseURL:'http://47.93.255.80:8081/admin'
     })
 }
 
@@ -39,6 +40,6 @@ export function DeleteUser(data){
         url:'/user/delete_user',
         method: 'post',
         data,
-        baseURL: 'http://47.103.201.174/'
+        baseURL: 'http://47.93.255.80:8081/admin'
     })
 }

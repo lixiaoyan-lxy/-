@@ -64,18 +64,9 @@ export default {
   name: "Login",
   data() {
     const validateUsername = (rule, value, callback) => {
-<<<<<<< HEAD
       callback()
     
     }
-=======
-      if (!validUsername(value)) {
-        callback(new Error("亲~您的用户名错误，请输入正确的用户名哦~"));
-      } else {
-        callback();
-      }
-    };
->>>>>>> 5399ecbbb751819adca9df75664181ee67435fee
     const validatePassword = (rule, value, callback) => {
       if (value.length < 6) {
         callback(new Error("亲~密码不能少于六位数哦~"));

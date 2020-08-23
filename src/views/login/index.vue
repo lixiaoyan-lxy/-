@@ -17,7 +17,7 @@
         </div>
         <div class="from-container">
           <el-form-item prop="username" class="username-container">
-            <span >
+            <span>
               <svg-icon icon-class="user" />
             </span>
             <el-input
@@ -47,10 +47,17 @@
               @keyup.enter.native="handleLogin"
             />
             <span class="show-pwd" @click="showPwd">
-              <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
+              <svg-icon
+                :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'"
+              />
             </span>
           </el-form-item>
-          <el-button class="button-container" type="primary" @click.native.prevent="handleLogin">登录</el-button>
+          <el-button
+            class="button-container"
+            type="primary"
+            @click.native.prevent="handleLogin"
+            >登录</el-button
+          >
         </div>
       </el-form>
     </div>
@@ -64,42 +71,41 @@ export default {
   name: "Login",
   data() {
     const validateUsername = (rule, value, callback) => {
-      callback()
     
-    }
-    const validatePassword = (rule, value, callback) => {
-      if (value.length < 6) {
-        callback(new Error("亲~密码不能少于六位数哦~"));
-      } else {
         callback();
-      }
+     
+    };
+    const validatePassword = (rule, value, callback) => {
+  
+        callback();
+   
     };
     return {
       loginForm: {
         username: "admin",
-        password: "123456",
+        password: "123456"
       },
       loginRules: {
         username: [
-          { required: true, trigger: "blur", validator: validateUsername },
+          { required: true, trigger: "blur", validator: validateUsername }
         ],
         password: [
-          { required: true, trigger: "blur", validator: validatePassword },
-        ],
+          { required: true, trigger: "blur", validator: validatePassword }
+        ]
       },
       loading: false,
       passwordType: "password",
       redirect: undefined,
-      imgSrc: require("@/assets/login/login_4.png"),
+      imgSrc: require("@/assets/login/login_4.png")
     };
   },
   watch: {
     $route: {
-      handler: function (route) {
+      handler: function(route) {
         this.redirect = route.query && route.query.redirect;
       },
-      immediate: true,
-    },
+      immediate: true
+    }
   },
   methods: {
     showPwd() {
@@ -113,7 +119,7 @@ export default {
       });
     },
     handleLogin() {
-      this.$refs.loginForm.validate((valid) => {
+      this.$refs.loginForm.validate(valid => {
         if (valid) {
           this.loading = true;
           this.$store
@@ -131,8 +137,8 @@ export default {
         }
       });
       // this.$router.push({path: 'goods'})
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -185,7 +191,7 @@ $cursor: #fff;
 <style lang="scss" scoped>
 $dark: #294250;
 $dark_gray: #889aa4;
-$container_bg:rgba(175, 175, 175,0);
+$container_bg: rgba(175, 175, 175, 0);
 
 * {
   box-sizing: border-box;
@@ -304,7 +310,7 @@ $container_bg:rgba(175, 175, 175,0);
           width: 0;
           height: 100%;
           content: "";
-          background-color: rgba(250, 250, 250, 0.1);
+          background-color: rgba(250, 250, 250, 0);
           border-radius: 5px;
           box-shadow: -7px -7px 20px 0px #fff9, -4px -4px 5px 0px #fff9,
             7px 7px 20px 0px #0005, 4px 4px 5px 0px #0003;

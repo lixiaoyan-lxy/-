@@ -235,7 +235,6 @@ export default {
         //     this.$refs.editUserRef.resetFields()
         // },
         // 验证修改信息并提交
-<<<<<<< HEAD
         // editUserInfo(){
         //     this.$refs.editUserRef.validate(valid =>{
         //         // console.log(valid)
@@ -255,27 +254,6 @@ export default {
         //         this.getLists();
         //     })
         // },
-=======
-        editUserInfo(){
-            this.$refs.editUserRef.validate(valid =>{
-                // console.log(valid)
-                if(!valid) return
-                EidtUserss(this.editForm)
-                .then(res =>{
-                    if(res.code === 200){
-                        this.ediDialogVisible = false;
-                        this.$message.success('修改成功')
-                    }
-                })
-                .catch(error => {
-                    this.ediDialogVisible = false;
-                    this.$message.error('修改失败！')
-                    console.log(error);
-                })
-                this.getLists();
-            })
-        },
->>>>>>> 9870f33f359fdf41758ce5e1aefcb6f77e243fa3
         //删除用户
         delUser(data){
             this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {

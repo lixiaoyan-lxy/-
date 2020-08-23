@@ -126,6 +126,7 @@
 </template>
 <script>
 import { shopping } from "@/api/credit";
+import { goodsList } from "@/api/goodslist";
 
 export default {
   name: "classification",
@@ -142,7 +143,8 @@ export default {
         select: null,
         time: null
       },
-      
+    
+
       /* 详情表数据 */
       detailsForm: {},
       /* 详情表格数据 */
@@ -165,16 +167,20 @@ export default {
     },
     /* 获取数据 */
     getData() {
+     
       var current_page = null;
       var per_page = null;
       var data = {
         current_page: this.page.current,
         per_page: this.page.pageSize
       };
-      shopping(data).then(res => {
-        this.options = res;
-        this.page.total = res.length;
-      });
+      shopping(data)
+        .then(res => {
+          
+          this.options = res.data;
+          this.page.total = res.data.length;
+        })
+       
     },
     /* 打开详情页 */
     toInfo(val) {
@@ -205,12 +211,12 @@ export default {
       var orderid = this.form.number;
       var status = null;
       status = this.form.select;
-      vardata = {
+      var data = {
         orderid
       };
 
       shopping(data).then(res => {
-        this.options = res;
+        this.options = res.data;
       });
     },
     /* 分页 */

@@ -1,11 +1,11 @@
 <template>
     <div>
         <!-- 面包屑导航区 -->
-        <el-breadcrumb separator="/">
+        <!-- <el-breadcrumb separator="/">
           <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
           <el-breadcrumb-item>用户中心</el-breadcrumb-item>
           <el-breadcrumb-item>角色管理</el-breadcrumb-item>
-        </el-breadcrumb>
+        </el-breadcrumb> -->
 
         <!-- 卡片视图区 -->
         <el-card>
@@ -50,7 +50,7 @@
         <el-dialog title="修改角色信息" :visible.sync="editDialogRole" width="50%" @close="editRoleDialogClose">
           <el-form :model="editRoleForm" :rules="addRoleRules" ref="editRoleFormRef" label-width="100px" class="demo-ruleForm">
             <el-form-item label="角色名" prop="role">
-              <el-input v-model="editRoleForm.role" disabled></el-input>
+              <el-input v-model="editRoleForm.role"></el-input>
             </el-form-item>
             <el-form-item label="描述" prop="describe">
               <el-input v-model="editRoleForm.describe"></el-input>
@@ -105,7 +105,7 @@ export default {
         // console.log(res);
         if(res.code === 200){
           this.rolelist = res.data;
-          console.log(this.rolelist);
+          // console.log(this.rolelist);
         }
       })
       .catch(error => {

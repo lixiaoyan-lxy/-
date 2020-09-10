@@ -12,9 +12,7 @@ export function GetUserList(data){
 
 // 添加用户
 export function UserAdd(data){
-    return request ({
-        // url:'/admin/AdminCreat',
-        // url:'http://47.103.201.174/index.php/user/editUser',
+    return request ({ 
         url: '/user/editUser',
         method: 'post',
         data,
@@ -23,14 +21,14 @@ export function UserAdd(data){
 }
 
 // 修改用户信息
-// export function EidtUserss(data){
-//     return request ({
-//         url:'/admin/editAdmin',
-//         method: 'post',
-//         data,
-//         baseURL: 'http://server3.luronghui.cn'
-//     })
-// }
+export function EidtUserss(data){
+    return request ({
+        url:'/user/updateStatus',
+        method: 'post',
+        data,
+        baseURL: 'http://47.93.255.80:8081/admin'
+    })
+}
 
 //删除用户
 export function DeleteUser(data){

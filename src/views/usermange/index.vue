@@ -1,11 +1,12 @@
 <template>
     <div>
         <!-- 面包屑导航区 -->
-        <el-breadcrumb separator="/">
+        <!-- <el-breadcrumb separator="/">
             <el-breadcrumb-item :to="{ path: '/home' }">首页</el-breadcrumb-item>
             <el-breadcrumb-item>用户中心</el-breadcrumb-item>
             <el-breadcrumb-item>用户管理</el-breadcrumb-item>
-        </el-breadcrumb>
+        </el-breadcrumb> -->
+
         <!-- 卡片视图区 -->
         <el-card class="box-card">
             <!-- 搜索与添加 -->
@@ -41,7 +42,7 @@
                 </el-table-column>
                 <el-table-column label="操作" width="180px">
                     <template slot-scope="scope">
-                        <!-- <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEdiUser(scope.row)">编辑</el-button> -->
+                        <el-button size="mini" type="primary" icon="el-icon-edit" @click="showEdiUser(scope.row)">编辑</el-button>
                         <el-button size="mini" type="danger" icon="el-icon-delete" @click="delUser(scope.row.id)">删除</el-button>
                     </template>
                 </el-table-column>
@@ -83,14 +84,14 @@
         </el-dialog>
 
         <!-- 修改用户信息的对话框 -->
-        <!-- <el-dialog title="修改用户信息" :visible.sync="ediDialogVisible" width="50%" @close="editDialogClose">
+        <el-dialog title="修改用户信息" :visible.sync="ediDialogVisible" width="50%" @close="editDialogClose">
             <el-form :model="editForm" :rules="addFormRules" ref="editUserRef" label-width="80px">
                 <el-form-item label="用户昵称" prop="username">
                     <el-input v-model="editForm.username"></el-input>
                 </el-form-item>
-                <el-form-item label="密码" prop="password">
+                <!-- <el-form-item label="密码" prop="password">
                     <el-input v-model="editForm.password"></el-input>
-                </el-form-item>
+                </el-form-item> -->
                 <el-form-item label="电话" prop="phone">
                     <el-input v-model="editForm.phone"></el-input>
                 </el-form-item>
@@ -108,7 +109,7 @@
                 <el-button @click="ediDialogVisible= false">取 消</el-button>
                 <el-button type="primary" @click="editUserInfo">确 定</el-button>
             </span>
-        </el-dialog> -->
+        </el-dialog>
     </div>
 </template>
 
@@ -160,8 +161,8 @@ export default {
                 ]
             },
             // 控制修改用户信息的显示与隐藏
-            // ediDialogVisible:false,
-            // editForm:{},
+            ediDialogVisible:false,
+            editForm:{},
         }
     },
     created() {
@@ -226,34 +227,34 @@ export default {
             })
         },
         // 展示修改用户信息的对话框
-        // showEdiUser(data){
-        //     this.editForm = data;
-        //     this.ediDialogVisible = true
-        // },
+        showEdiUser(data){
+            this.editForm = data;
+            this.ediDialogVisible = true
+        },
         // 监听修改用户信息对话框的关闭事件
-        // editDialogClose(){
-        //     this.$refs.editUserRef.resetFields()
-        // },
+        editDialogClose(){
+            this.$refs.editUserRef.resetFields()
+        },
         // 验证修改信息并提交
-        // editUserInfo(){
-        //     this.$refs.editUserRef.validate(valid =>{
-        //         // console.log(valid)
-        //         if(!valid) return
-        //         EidtUserss(this.editForm)
-        //         .then(res =>{
-        //             if(res.code === 200){
-        //                 this.ediDialogVisible = false;
-        //                 this.$message.success('修改成功')
-        //             }
-        //         })
-        //         .catch(error => {
-        //             this.ediDialogVisible = false;
-        //             this.$message.error('修改失败！')
-        //             console.log(error);
-        //         })
-        //         this.getLists();
-        //     })
-        // },
+        editUserInfo(){
+            this.$refs.editUserRef.validate(valid =>{
+                // console.log(valid)
+                if(!valid) return
+                EidtUserss(this.editForm)
+                .then(res =>{
+                    if(res.code === 200){
+                        this.ediDialogVisible = false;
+                        this.$message.success('修改成功')
+                    }
+                })
+                .catch(error => {
+                    this.ediDialogVisible = false;
+                    this.$message.error('修改失败！')
+                    console.log(error);
+                })
+                this.getLists();
+            })
+        },
         //删除用户
         delUser(data){
             this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {

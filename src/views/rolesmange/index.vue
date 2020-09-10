@@ -155,7 +155,8 @@ export default {
     },
     // 展示修改角色信息的对话框
     showEditRols(data){
-      this.editRoleForm = data;
+      // this.editRoleForm = data;
+      this.editRoleForm = JSON.parse(JSON.stringify(data));
       this.editDialogRole = true
     },
     // 监听修改角色信息对话框的关闭事件

@@ -229,8 +229,7 @@ export default {
         // 展示修改用户信息的对话框
         showEdiUser(data){
             // this.editForm = data;
-            // this.editRoleForm = JSON.parse(JSON.stringify(data));
-            this.editRoleForm = JSON.parse(JSON.stringify(data));
+            this.editForm = JSON.parse(JSON.stringify(data));
             this.ediDialogVisible = true
         },
         // 监听修改用户信息对话框的关闭事件
